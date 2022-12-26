@@ -49,6 +49,3 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 });
 
-Route::middleware('auth', 'can:isDataClerk')->group(function () {
-    Route::get('/facilities', [FacilityController::class, 'index'])->name('facility.index');
-});

@@ -18,7 +18,6 @@ class Client extends Model
         'return_visit_date',
         'telephone_number',
         'care_giver_telephone_number',
-        'facility'
     ];
 
 }

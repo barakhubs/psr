@@ -2,6 +2,7 @@
 namespace App\SMS;
 
 use App\Models\Client;
+use App\Models\SentSms;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -13,7 +14,7 @@ class ExcelModel implements ToModel, WithHeadingRow, WithUpserts
     public function model(array $row)
     {
         // dd($row);
-        return new Client([
+        $excel =  new Client([
             'hiv_clinic_no' => $row['hiv_clinic_no'],
             'family_name' => $row['family_name'],
             'given_name' => $row['given'],
@@ -23,6 +24,8 @@ class ExcelModel implements ToModel, WithHeadingRow, WithUpserts
             'telephone_number' => $row['telephone_number'],
             'care_giver_telephone_number' => $row['care_givers_telephone_number'],
         ]);
+        
+        return $excel;
     }
 
     /**

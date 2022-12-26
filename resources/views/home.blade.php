@@ -34,18 +34,7 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card tale-bg">
                     <div class="card-people mt-auto">
-                        <img src="{{ asset('images/dashboard/people.svg') }}" alt="people">
-                        <div class="weather-info">
-                            <div class="d-flex">
-                                <div>
-                                    <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
-                                </div>
-                                <div class="ml-2">
-                                    <h4 class="location font-weight-normal">Bangalore</h4>
-                                    <h6 class="font-weight-normal">India</h6>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="{{ asset('images/dashboard/dash.png') }}" alt="people">
                     </div>
                 </div>
             </div>
@@ -84,7 +73,7 @@
                         <div class="card card-light-danger">
                             <div class="card-body">
                                 <p class="mb-4">Number of Clients</p>
-                                <p class="fs-30 mb-2">47033</p>
+                                <p class="fs-30 mb-2">{{ $total_number_of_clients }}</p>
                                 <p>0.22% (30 days)</p>
                             </div>
                         </div>

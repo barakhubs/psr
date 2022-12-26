@@ -15,12 +15,11 @@ class Client extends Component
     use WithFileUploads;
 
     public $upload_file;
-    public $facility;
 
     public bool $button = false;
 
     public $iteration;
-    
+
     protected $rules = [
         'upload_file' => 'required|mimes:xlsx,cvs,txt',
     ];
@@ -34,7 +33,7 @@ class Client extends Component
     public function uploadFile (FlasherInterface $flasherInterface) {
         $validatedData = $this->validate();
 
-        $update =  Excel::import(new ExcelModel, $this->upload_file, $this->facility);
+        $update =  Excel::import(new ExcelModel, $this->upload_file);
 
         if($update) {
             $flasherInterface->addSuccess('Database updated successfully!');
@@ -50,7 +49,6 @@ class Client extends Component
 
     public function render()
     {
-        $facilities = Facility::where('district', Auth::user()->district)->get();
-        return view('livewire.client', compact('facilities'));
+        return view('livewire.client');
     }
 }

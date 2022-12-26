@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('facilities', function (Blueprint $table) {
+        Schema::create('sent_sms', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('district');
+            $table->unsignedBigInteger('client');
+            $table->string('sms_last_sent_date')->nullable();
+            $table->string('reported_date_after_reminder')->nullable();
+            $table->string('sms_send_date')->nullable();
             $table->timestamps();
+
+            $table->foreign('client')->references('id')->on('clients')->cascadeOnDelete();
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facilities');
+        Schema::dropIfExists('sent_sms');
     }
 };
