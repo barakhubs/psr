@@ -36,7 +36,6 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::post('/users/{id}/update', [UserController::class, 'update'])->name('users.update');
     Route::post('/users', [UserController::class, 'destroy'])->name('users.destroy');
 
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 });
 
 // routes for all users
@@ -45,4 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/clients', [ClientController::class, 'index'])->name('client.list');
     Route::get('/appointments', [ClientController::class, 'appointments'])->name('client.appointment');
     Route::get('/send-sms', [ClientController::class, 'sendSms'])->name('client.send-sms');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 });

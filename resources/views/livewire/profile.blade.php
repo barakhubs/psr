@@ -49,10 +49,10 @@
                         </div>
                         <div class="form-group">
                             <label for="name">New Password</label>
-                            <input type="password" wire:model="new_password"
-                                class="form-control @error('new_password') is-invalid @enderror" id="new_password"
+                            <input type="password" wire:model="password"
+                                class="form-control @error('password') is-invalid @enderror" id="password"
                                 placeholder="New Password">
-                            @error('new_password')
+                            @error('password')
                                 <span class="invalid-feedback" role="alert">{{ $message}}</span>
                             @enderror
                         </div>
