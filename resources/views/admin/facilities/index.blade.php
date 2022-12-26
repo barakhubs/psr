@@ -14,6 +14,6 @@
                 </div>
             </div>
         </div>
-        @livewire('district')
+        @livewire('facility')
     </div>
 @endsection

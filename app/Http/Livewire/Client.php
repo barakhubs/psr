@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Facility;
 use App\SMS\ExcelModel;
 use Flasher\Prime\FlasherInterface;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
@@ -46,6 +48,7 @@ class Client extends Component
 
     public function render()
     {
-        return view('livewire.client');
+        $facilities = Facility::where('district', Auth::user()->district)->get();
+        return view('livewire.client', compact('facilities'));
     }
 }

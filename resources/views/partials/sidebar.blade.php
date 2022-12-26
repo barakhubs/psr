@@ -28,7 +28,7 @@
             </div>
         </li>
             <li class="nav-item">
-                <a class="nav-link">
+                <a class="nav-link" href="{{ route('facility.index') }}">
                     <i class="ti-settings menu-icon"></i>
                     <span class="menu-title">Facility Management</span>
                 </a>

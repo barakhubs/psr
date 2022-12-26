@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -46,4 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/send-sms', [ClientController::class, 'sendSms'])->name('client.send-sms');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+});
+
+Route::middleware('auth', 'can:isDataClerk')->group(function () {
+    Route::get('/facilities', [FacilityController::class, 'index'])->name('facility.index');
 });

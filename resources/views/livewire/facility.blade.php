@@ -13,20 +13,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($facilities !== null)
+                            @if ($facilities->count() > 0 )
                                 @foreach ($facilities as $key=>$item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>
-                                        <span><button wire:click="initiateUpdate({{ $item->id }})" class="btn btn-sm btn-outline-primary"><i class="ti-pencil"></i> Edit</button></span>
-                                        <span><button wire:click="deleteDistrict({{ $item->id }})" class="btn btn-sm btn-outline-danger"><i class="ti-trash"></i> Delete</button></span>
+                                        <span><button wire:click="deleteFacility({{ $item->id }})" class="btn btn-sm btn-outline-danger"><i class="ti-trash"></i> Delete</button></span>
                                     </td>
                                 </tr>
                                 @endforeach
                             @else
                             <tr>
-                                <td colspan="5">No district found</td>
+                                <td colspan="3">No Facility found</td>
                             </tr>
                             @endif
                         </tbody>
@@ -41,9 +40,9 @@
     <div class="col-md-5 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">{{ $formTitle }}</h4>
+                <h4 class="card-title">Add Facility</h4>
                 <div class="pt-2">
-                    <form class="forms-sample" wire:submit.prevent="{{ $submitFacility }}">
+                    <form class="forms-sample" wire:submit.prevent="submitFacility">
                         <div class="form-group">
                             <label for="name">Facility Name</label>
                             <input type="text" wire:model="name"
@@ -54,7 +53,6 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
                     </form>
                 </div>
             </div>
