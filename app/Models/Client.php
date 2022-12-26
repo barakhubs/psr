@@ -17,7 +17,8 @@ class Client extends Model
         'hiv_viral_load_date',
         'return_visit_date',
         'telephone_number',
-        'care_giver_telephone_number'
+        'care_giver_telephone_number',
+        'facility'
     ];
-    
+
 }

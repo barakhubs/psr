@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('return_visit_date')->nullable();
             $table->string('telephone_number')->nullable();
             $table->string('care_giver_telephone_number')->nullable();
+            $table->string('facilities')->nullable();
             $table->timestamps();
         });
     }

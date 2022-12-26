@@ -5,7 +5,7 @@
         </div>
         <div class="form-group">
             <label>Select Facility</label>
-            <select class="js-example-basic-single w-100 @error('facility') is-invalid @enderror" name="district">
+            <select class="js-example-basic-single w-100 @error('facility') is-invalid @enderror" wire:model="district">
                 @foreach ($facilities as $item)
                     <option value="{{ $item->id }}">
                         {{ $item->name }}

@@ -6,7 +6,6 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        @can('isDataClerk')
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#client-manager" aria-expanded="false"
                 aria-controls="ui-basic">
@@ -27,6 +26,7 @@
                 </ul>
             </div>
         </li>
+        @can('isDataClerk')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('facility.index') }}">
                     <i class="ti-settings menu-icon"></i>

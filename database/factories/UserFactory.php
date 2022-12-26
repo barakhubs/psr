@@ -23,6 +23,7 @@ class UserFactory extends Factory
             'email' => 'admin@admin.com',
             'phone_number' => fake()->phoneNumber(),
             'role' => 'admin',
+            'district' => '1',
             'email_verified_at' => now(),
             'password' => bcrypt('helloworld'),
             'remember_token' => Str::random(10),

@@ -15,10 +15,12 @@ class Client extends Component
     use WithFileUploads;
 
     public $upload_file;
+    public $facility;
 
     public bool $button = false;
 
     public $iteration;
+    
     protected $rules = [
         'upload_file' => 'required|mimes:xlsx,cvs,txt',
     ];
@@ -32,7 +34,7 @@ class Client extends Component
     public function uploadFile (FlasherInterface $flasherInterface) {
         $validatedData = $this->validate();
 
-        $update =  Excel::import(new ExcelModel, $this->upload_file);
+        $update =  Excel::import(new ExcelModel, $this->upload_file, $this->facility);
 
         if($update) {
             $flasherInterface->addSuccess('Database updated successfully!');
