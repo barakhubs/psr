@@ -6,6 +6,7 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
+        @can('isDataClerk')
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#client-manager" aria-expanded="false"
                 aria-controls="ui-basic">
@@ -15,18 +16,17 @@
             </a>
             <div class="collapse" id="client-manager">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Update Database</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('client.create') }}">Update Database</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Patients List</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('client.list') }}">Patients List</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Appointments</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('client.appointment') }}">Appointments</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Custom SMS</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('client.send-sms') }}">Custom SMS</a>
                     </li>
                 </ul>
             </div>
         </li>
-        @can('isDataClerk')
             <li class="nav-item">
                 <a class="nav-link">
                     <i class="ti-settings menu-icon"></i>
@@ -35,7 +35,7 @@
             </li>
         @endcan
         @can('isAdmin')
-            <li class="nav-item" {{ Request::routeIs('users') ? 'active' : '' }}>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="ti-user menu-icon"></i>
                     <span class="menu-title">User Management</span>
@@ -59,7 +59,7 @@
             onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
                 <i class="ti-power-off menu-icon"></i>
-                Logout
+                <span class="menu-title">Logout</span>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>

@@ -13,7 +13,7 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        return view('admin.district.index');
+        return view('admin.districts.index');
     }
 
     /**

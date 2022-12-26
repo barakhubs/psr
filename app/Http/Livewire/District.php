@@ -29,6 +29,7 @@ class District extends Component
     ];
 
     public function storeDistrict (FlasherInterface $flasherInterface){
+        
         $create = ModelsDistrict::create([
                     'name'      =>  $this->name,
                     'language'  =>  $this->language,

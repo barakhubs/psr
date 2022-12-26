@@ -38,36 +38,29 @@
                 <h4 class="card-title">Change Password</h4>
                 <div class="pt-2">
                     <form class="forms-sample" wire:submit.prevent="changePassword">
-                        @csrf
                         <div class="form-group">
-                            <label for="old_password" class="">Old Password</label>
-                            <div class="">
-                                <input type="password" class="form-control @error('old_password') is-invalid @enderror"
-                                    id="old_password" placeholder="Old Password" wire:model="old_password">
-                            </div>
+                            <label for="name">Old Password</label>
+                            <input type="password" wire:model="old_password"
+                                class="form-control @error('old_password') is-invalid @enderror" id="old_password"
+                                placeholder="Old Passworde">
                             @error('old_password')
-                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                <span class="invalid-feedback" role="alert">{{ $message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="new_password">New Password</label>
-                            <div>
-                                <input type="password" class="form-control @error('new_password') is-invalid @enderror"
-                                    id="new_password" placeholder="New Password" wire:model="new_password">
-                            </div>
+                            <label for="name">New Password</label>
+                            <input type="password" wire:model="new_password"
+                                class="form-control @error('new_password') is-invalid @enderror" id="new_password"
+                                placeholder="New Password">
                             @error('new_password')
-                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                <span class="invalid-feedback" role="alert">{{ $message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password_confirmation">Confirm Password</label>
-                            <div>
-                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                    id="password_confirmation" placeholder="Confirm Password" wire:model="password_confirmation">
-                            </div>
-                            @error('password_confirmation')
-                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                            @enderror
+                            <label for="name">Confirm Password</label>
+                            <input type="password" wire:model="password_confirmation"
+                                class="form-control " id="password_confirmation"
+                                placeholder="Password Confirmation">
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     </form>
