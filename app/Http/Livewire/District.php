@@ -23,13 +23,13 @@ class District extends Component
     public $submitFunction = "storeDistrict";
 
     protected $rules = [
-        'name' => 'required',
-        'language' => 'required',
-        'initials' => 'required',
+        'name'      => 'required',
+        'language'  => 'required',
+        'initials'  => 'required|max:3',
     ];
 
     public function storeDistrict (FlasherInterface $flasherInterface){
-        
+
         $create = ModelsDistrict::create([
                     'name'      =>  $this->name,
                     'language'  =>  $this->language,
@@ -93,15 +93,16 @@ class District extends Component
         }
     }
 
-
     public function clearForm(){
         $this->name = "";
         $this->language = "";
         $this->initials = "";
     }
+
     public function render()
     {
         $districts = ModelsDistrict::paginate(5);
         return view('livewire.district', compact('districts'));
     }
+    
 }

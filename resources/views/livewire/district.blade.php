@@ -24,9 +24,26 @@
                                     <td>{{ $item->language }}</td>
                                     <td>
                                         <span><button wire:click="initiateUpdate({{ $item->id }})" class="btn btn-sm btn-outline-primary"><i class="ti-pencil"></i> Edit</button></span>
-                                        <span><button wire:click="deleteDistrict({{ $item->id }})" class="btn btn-sm btn-outline-danger"><i class="ti-trash"></i> Delete</button></span>
+                                        <span><button data-toggle="modal" data-target="#delete-{{ $item->id }}" class="btn btn-sm btn-outline-danger"><i class="ti-trash"></i> Delete</button></span>
                                     </td>
                                 </tr>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="delete-{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    Are you sure you want to delete this district?
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" data-dismiss="modal" wire:click="deleteDistrict({{ $item->id }})" class="btn btn-danger">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endforeach
                             @else
                             <tr>

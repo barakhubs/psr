@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
 use App\Models\District;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Foundation\Auth\User;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -53,7 +55,18 @@ class UserController extends Controller
             // alert
             $flasherInterface->addSuccess('User saved successfully');
 
-            //send email with password to user
+            $data = [
+                'email' => $request->email,
+                'name' => $request->first_name.' '.$request->last_name,
+                'subject' => 'New Account Creation',
+                'body' => "Hello " . $request->first_name. ", an account has been created for you with ".env('APP_NAME'). ". Use the following details to login: \n".
+                           "Email: " . $request->email . "\nPassword: " . $password,
+            ];
+            Mail::raw($data['body'], function ($message) use ($data) {
+                $message->to($data['email'], $data['name'])
+                        ->subject($data['subject']);
+            });
+
             return redirect()->back();
         }
     }
