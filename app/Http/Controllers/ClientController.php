@@ -18,7 +18,7 @@ class ClientController extends Controller
     }
 
     public function appointments (){
-        $clients = Client::whereDate('return_visit_date', Carbon::today())->get();
+        $clients = Client::whereDate('return_visit_date','<=', Carbon::now()->addDays(10))->get();
         return view('clients.appointments', compact('clients'));
     }
 
