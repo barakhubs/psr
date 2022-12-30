@@ -41,11 +41,14 @@ Route::middleware(['auth', 'can:isAdmin'])->group(function () {
 
 // routes for all users
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+});
+
+// routes for all users
+Route::middleware('auth', 'can:isDataClerk')->group(function () {
     Route::get('/update-database', [ClientController::class, 'create'])->name('client.create');
     Route::get('/clients', [ClientController::class, 'index'])->name('client.list');
     Route::get('/appointments', [ClientController::class, 'appointments'])->name('client.appointment');
     Route::get('/send-sms', [ClientController::class, 'sendSms'])->name('client.send-sms');
-
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 });
 
