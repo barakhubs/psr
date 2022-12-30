@@ -7,7 +7,7 @@ use App\Models\Client;
 use App\Models\SentSms;
 use Carbon\Carbon;
 
-class SendSms
+class SendSMS
 {
 
     public function sendAtSix(){

@@ -28,7 +28,7 @@ class SendOneDayBefore extends Command
      */
     public function handle()
     {
-        $reminder=new SendSms();
+        $reminder=new SendSMS();
         $reminder->sendOneDayRemainder();
     }
 }
