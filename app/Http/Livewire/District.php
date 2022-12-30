@@ -87,7 +87,7 @@ class District extends Component
         $delete = ModelsDistrict::find($id)->delete();
 
         if($delete) {
-            $flasherInterface->addSuccess('District saved successfully');
+            $flasherInterface->addSuccess('District deleted successfully');
         } else {
             $flasherInterface->addError('An error occured. Please try again');
         }
@@ -104,5 +104,5 @@ class District extends Component
         $districts = ModelsDistrict::paginate(5);
         return view('livewire.district', compact('districts'));
     }
-    
+
 }

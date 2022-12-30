@@ -24,24 +24,8 @@ class SendSMS
             $send = $sms->send([
                     'to'      => '+256'.$appointment->telephone_number,
                     'message' => "Hello ".$appointment->given_name. ", \n This is a remainder that you have an appointment at " .$appointment->hiv_clinic_no. " on ".$appointment->return_visit_date ."\n We are looking forward to seeing you \n\n".
-                                "Mi ngoni ".$appointment->given_name. ", Ma mi enga oti ta mivu mi ni ba le an\'draa " .$appointment->hiv_clinic_no. " aro jo\'a risi o\'mba o\'du " .$appointment->return_visit_date
+                                "Mi ngoni ".$appointment->given_name. ", Ma mi enga oti ta mivu mi ni ba le an'\draa " .$appointment->hiv_clinic_no. " aro jo'\a risi o'\mba o'\du " .$appointment->return_visit_date
                 ]);
-
-            if($send) {
-                $sms_sent = SentSms::where('client', $appointment->hiv_clinic_no)->where('sms_last_sent_date', null)->first();
-                // store in the sent sms table
-                if($sms_sent !== null) {
-                    $sms_sent->update([
-                        'sms_last_sent_date' => $appointment->return_visit_date,
-                        'sms_send_date' => Carbon::now()
-                    ]);
-                } else{
-                    SentSms::create([
-                        'client' => $appointment->hiv_clinic_no,
-                        'sms_send_date' => Carbon::now()
-                    ]);
-                }
-            }
         }
 
     }
@@ -58,10 +42,10 @@ class SendSMS
 
         foreach ($appointments as $appointment) {
             // send sms
-            $sms->send([
+            $send = $sms->send([
                 'to'      => '+256'.$appointment->telephone_number,
                 'message' => "Hello ".$appointment->given_name. ", \n This is a remainder that you have an appointment at " .$appointment->hiv_clinic_no. " on ".$appointment->return_visit_date ."\n We are looking forward to seeing you \n\n".
-                             "Mi ngoni ".$appointment->given_name. ", Ma mi enga oti ta mivu mi ni ba le an\'draa " .$appointment->hiv_clinic_no. " aro jo\'a risi o\'mba o\'du " .$appointment->return_visit_date
+                            "Mi ngoni ".$appointment->given_name. ", Ma mi enga oti ta mivu mi ni ba le an\'draa " .$appointment->hiv_clinic_no. " aro jo\'a risi o\'mba o\'du " .$appointment->return_visit_date
             ]);
 
         }

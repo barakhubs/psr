@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\SMS\SendSms;
+use App\SMS\SendSMS;
 use Illuminate\Console\Command;
 
 class SendDaily extends Command
