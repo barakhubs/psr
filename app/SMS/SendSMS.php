@@ -11,7 +11,7 @@ class SendSMS
 {
 
     public function sendAtSix(){
-        $AT       = new AfricasTalking(env('SMS_USERNAME'), env('SMS_API_KEY'));
+        $AT       = new AfricasTalking('smsReminder', '4fa1c3a90deccdc104524a8833bde2a7ffc4dff82736fdcbe28cb8a861fad1d4');
 
         // Get one of the services
         $sms      = $AT->sms();
